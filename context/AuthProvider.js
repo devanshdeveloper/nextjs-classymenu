@@ -40,17 +40,17 @@ export default function AuthProvider({ children }) {
   const pathName = usePathname();
 
   /* on app load and user change */
-  useEffect(() => {
-    if (pathName === "/auth") {
-      if (user) {
-        router.push("/");
-      }
-    } else {
-      if (!user) {
-        if (pathName === "/") router.push("/auth");
-      }
-    }
-  }, [user, router, pathName]);
+  // useEffect(() => {
+  //   if (pathName === "/auth") {
+  //     if (user) {
+  //       router.push("/");
+  //     }
+  //   } else {
+  //     if (!user) {
+  //       if (pathName === "/") router.push("/auth");
+  //     }
+  //   }
+  // }, [user, router, pathName]);
 
   /* google auth handlers */
 
