@@ -22,14 +22,14 @@ export default function Home() {
   } = useAuth();
   const googleButtonRef = useRef();
 
-  useEffect(() => {
-    if (loader.isGSIClientLoaded && google) {
-      google.accounts.id.renderButton(googleButtonRef.current, {
-        theme: "outline",
-        size: "large",
-      });
-    }
-  }, [loader.isGSIClientLoaded]);
+  // useEffect(() => {
+  //   if (loader.isGSIClientLoaded && google) {
+  //     google.accounts.id.renderButton(googleButtonRef.current, {
+  //       theme: "outline",
+  //       size: "large",
+  //     });
+  //   }
+  // }, [loader.isGSIClientLoaded]);
 
   return (
     <div>
@@ -38,10 +38,10 @@ export default function Home() {
         <div className="flex flex-col gap-10 items-center w-[min(600px,85vw)] py-10 border-1 border-gray-300 dark:border-gray-700  rounded-lg ">
           <div className="text-2xl text-bold">Log in with</div>
           <div className="flex gap-10">
-            <div
+            {/* <div
               ref={googleButtonRef}
-              // className="hidden"
-            ></div>
+             className="hidden"
+            ></div> */}
             {[
               {
                 icon: <FaMicrosoft />,
