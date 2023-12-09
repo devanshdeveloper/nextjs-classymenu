@@ -212,14 +212,14 @@ export default function AuthProvider({ children }) {
         }}
       >
         <Alert isOpen={isOpen} onOpenChange={onOpenChange} text={alert.text} />
-        {children}
-        {/* {loader.isLoading ||
+        {/* {children} */}
+        {loader.isLoading ||
         !loader.isFacebookSDKLoaded ||
         !loader.isGSIClientLoaded ? (
           <ProgressLayout {...loader} />
         ) : (
           children
-        )} */}
+        )}
       </AuthContext.Provider>
     </>
   );
