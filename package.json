@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@azure/msal-browser": "*",
-    "@azure/msal-react": "*",
+    "@azure/msal-react": "2.0.2",
     "@nextui-org/react": "*",
     "@react-oauth/google": "*",
     "@react-pdf/renderer": "*",
