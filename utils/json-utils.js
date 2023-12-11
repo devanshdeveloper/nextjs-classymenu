@@ -129,7 +129,7 @@ export function addItemToObject(jsonData, newItem) {
       }
     }
   }
-  const newItemKey = `Q${lastNumericKey + 1}`;
+  const newItemKey = `Q${(lastNumericKey === 0 ? 1000 : lastNumericKey) + 1}`;
   jsonData["O1001"]["U1001"]["M1001"]["A1001"]["N1001"][newVersionKey] =
     Object.assign({}, lastVersion);
   jsonData["O1001"]["U1001"]["M1001"]["A1001"]["N1001"][newVersionKey][

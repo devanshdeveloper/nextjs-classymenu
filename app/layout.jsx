@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Menu App</title>
       </head>
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} `}>
         <Providers>{children}</Providers>
       </body>
     </html>
