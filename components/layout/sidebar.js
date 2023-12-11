@@ -1,9 +1,12 @@
 "use client";
-import { Chip } from "@nextui-org/react";
+import { SiBento } from "react-icons/si";
 import { Divider, Listbox, ListboxItem, ScrollShadow } from "@nextui-org/react";
 import { FaPlus } from "react-icons/fa";
 import { FaBowlRice } from "react-icons/fa6";
-
+import { LuSoup } from "react-icons/lu";
+import { PiShrimp } from "react-icons/pi";
+import { TbSalad } from "react-icons/tb";
+import { CiBowlNoodles } from "react-icons/ci";
 const SideBar = () => {
   const menus = Array.from({ length: 30 }, (_, index) => ({
     text: `Menu ${index + 1}`,
@@ -11,39 +14,12 @@ const SideBar = () => {
   }));
 
   const sections = [
-    { text: "Soup", isActive: true },
-    { text: "Starters" },
-    { text: "Rice" },
-    { text: "Pasta" },
-    { text: "Salads" },
-    { text: "Appetizers" },
-    { text: "Main Course" },
-    { text: "Desserts" },
-    { text: "Beverages" },
-    { text: "Seafood" },
-    { text: "Vegetarian" },
-    { text: "Chicken" },
-    { text: "Beef" },
-    { text: "Pork" },
-    { text: "Lamb" },
-    { text: "Pizza" },
-    { text: "Burgers" },
-    { text: "Sandwiches" },
-    { text: "Wraps" },
-    { text: "Sushi" },
-    { text: "Curries" },
-    { text: "Tacos" },
-    { text: "Burritos" },
-    { text: "Quesadillas" },
-    { text: "Nachos" },
-    { text: "Breakfast" },
-    { text: "Brunch" },
-    { text: "Dinner Specials" },
-    { text: "Kids Menu" },
-    { text: "Healthy Options" },
-    { text: "Dips and Sauces" },
-    { text: "Side Dishes" },
-    { text: "Add Section" },
+    { text: "Soup", isActive: true, emoji: "🍲", icon: <LuSoup /> },
+    { text: "Starters", emoji: "🍤", icon: <PiShrimp /> },
+    { text: "Rice", emoji: "🍚", icon: <FaBowlRice /> },
+    { text: "Pasta", emoji: "🍝", icon: <CiBowlNoodles /> },
+    { text: "Salads", emoji: "🥗", icon: <TbSalad /> },
+    { text: "Appetizers", emoji: "🍱", icon: <SiBento /> },
   ];
 
   return (
@@ -51,40 +27,52 @@ const SideBar = () => {
       <div className="w-1/2">
         <div className="h-16 flex items-center justify-between px-4 font-bold text-inherit">
           <div>Menus</div>
-          {/* <Chip color="primary"> */}
-            <FaPlus className="font-thin" />
-          {/* </Chip> */}
+          <FaPlus className="font-thin" />
         </div>
-        <Divider className="mb-4" />
+        <Divider />
         <ScrollShadow className="h-[calc(100vh-64px)] no-scrollbar">
           <Listbox
-            itemClasses={{ base: "py-3 px-4" }}
+            classNames={{ base: "p-0" }}
+            itemClasses={{ base: "py-3 px-4 rounded-none" }}
             items={menus}
-            aria-label="Dynamic Actions"
             onAction={(key) => alert(key)}
           >
-            {(item) => <ListboxItem key={item.text}>{item.text}</ListboxItem>}
+            {(item) => (
+              <ListboxItem key={item.text}>
+                <div className="flex items-center gap-2 text-lg">
+                  {item.emoji && !item.icon && <span>{item.emoji}</span>}
+                  {item.icon && <span>{item.icon}</span>}
+                  <span>{item.text}</span>
+                </div>
+              </ListboxItem>
+            )}
           </Listbox>
           <div className="h-16"></div>
         </ScrollShadow>
       </div>
       <Divider orientation="vertical" />
       <div className="w-1/2">
-      <div className="h-16 flex items-center justify-between px-4 font-bold text-inherit">
+        <div className="h-16 flex items-center justify-between px-4 font-bold text-inherit">
           <div>Sections</div>
-          {/* <Chip color="primary"> */}
-            <FaPlus className="font-thin" />
-          {/* </Chip> */}
         </div>
-        <Divider className="mb-4" />
+        <Divider />
         <ScrollShadow className="h-[calc(100vh-64px)] no-scrollbar">
           <Listbox
             items={sections}
             aria-label="Dynamic Actions"
-            itemClasses={{ base: "py-3 px-4" }}
+            classNames={{ base: "p-0" }}
+            itemClasses={{ base: "py-3 px-4 rounded-none" }}
             onAction={(key) => alert(key)}
           >
-            {(item) => <ListboxItem key={item.text}>{item.text}</ListboxItem>}
+            {(item) => (
+              <ListboxItem key={item.text}>
+                <div className="flex items-center gap-2 text-lg">
+                  {item.emoji && !item.icon && <span>{item.emoji}</span>}
+                  {item.icon && <span>{item.icon}</span>}
+                  <span>{item.text}</span>
+                </div>
+              </ListboxItem>
+            )}
           </Listbox>
           <div className="h-16"></div>
         </ScrollShadow>

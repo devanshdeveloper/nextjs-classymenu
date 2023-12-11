@@ -12,13 +12,7 @@ export default function Providers({ children }) {
   return (
     <NextUIProvider>
       <NextThemesProvider attribute="class" defaultTheme="dark">
-        <MsalProvider instance={msalInstance}>
-          <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
-            <AuthProvider>
-              <MenuProvider>{children}</MenuProvider>
-            </AuthProvider>
-          </GoogleOAuthProvider>
-        </MsalProvider>
+        <MenuProvider>{children}</MenuProvider>
       </NextThemesProvider>
     </NextUIProvider>
   );

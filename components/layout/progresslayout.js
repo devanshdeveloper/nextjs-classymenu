@@ -1,5 +1,4 @@
 import { Progress } from "@nextui-org/react";
-import React from "react";
 
 export default function ProgressLayout({ text = "Please Wait..." }) {
   return (

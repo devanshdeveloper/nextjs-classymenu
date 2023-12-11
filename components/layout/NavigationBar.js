@@ -6,21 +6,19 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
 } from "@nextui-org/react";
-// import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useTheme } from "next-themes";
 import { FaMoon, FaSun } from "react-icons/fa6";
-// import MenuPDF from "../MenuPDF";
-// import useIsClient from "@/hooks/useIsClient";
-import { useAuth, useMenu } from "@/context";
+import MenuPDF from "../MenuPDF";
+import useIsClient from "@/hooks/useIsClient";
+import { useMenu } from "@/context";
 import { downloadJSON } from "@/utils";
 
 export default function NavigationBar() {
   const { theme, setTheme } = useTheme();
-  // const { isClient } = useIsClient();
-  const { logout, user } = useAuth();
+  const { isClient } = useIsClient();
   const { menuData } = useMenu();
 
   return (
@@ -46,38 +44,21 @@ export default function NavigationBar() {
             }
           ></Switch>
         </NavbarItem>
-        {user && (
-          <>
-            <NavbarItem className="hidden lg:flex">
-              <Button variant="flat" onPress={() => downloadJSON(menuData)}>
-                Download JSON
-              </Button>
-            </NavbarItem>
-            {/* {isClient && (
-            <NavbarItem>
-                <PDFDownloadLink
-                  document={<MenuPDF text={JSON.stringify({}, null, 2)} />}
-                  fileName="document.pdf"
-                >
-                  {({ blob, url, loading, error }) => (
-                    <>
-                      {loading ? "Loading PDF" : "Download"}
-                      {error ? "Error" : null}
-                    </>
-                  )}
-                </PDFDownloadLink>
-            </NavbarItem>
-              )} */}
-            <NavbarItem>
-              <Button variant="flat" color="danger" onPress={logout}>
-                Logout
-              </Button>
-            </NavbarItem>
-          </>
+        <NavbarItem className="hidden lg:flex">
+          <Button variant="flat" onPress={() => downloadJSON(menuData)}>
+            Download JSON
+          </Button>
+        </NavbarItem>
+        {isClient && (
+          <NavbarItem>
+            <PDFDownloadLink
+              document={<MenuPDF text={JSON.stringify(menuData, null, 2)} />}
+              fileName="document.pdf"
+            >
+              Download PDF
+            </PDFDownloadLink>
+          </NavbarItem>
         )}
-        {/* {!user && (
-
-        )} */}
       </NavbarContent>
     </Navbar>
   );
