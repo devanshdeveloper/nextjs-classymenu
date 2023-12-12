@@ -31,7 +31,7 @@ export default function MenuForm() {
   }
 
   return (
-    <form className="absolute bottom-0 z-10 flex flex-col gap-5 p-5 bg-background w-[60%] border-t-1 borfer-gray-200 dark:border-gray-800">
+    <form className="flex flex-col gap-5 p-5 bg-background border-t-1 borfer-gray-200 dark:border-gray-800">
       <div className="text-bold text-xs">
         {currentEdit ? `Edit : ${currentEdit}` : "New Item"}
       </div>

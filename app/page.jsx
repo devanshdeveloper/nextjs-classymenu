@@ -20,27 +20,29 @@ export default function Home() {
   return (
     <div className="">
       <SideBar />
-      <div className="absolute top-0 left-96 w-[calc(100vw-384px)]">
+      <div className="absolute top-0 left-[312px] w-[calc(100vw-330px)]">
         <NavigationBar />
         <div className="flex h-[calc(100vh-65px)]">
-          <div className="w-[60%]">
+          <div className="w-[62%]">
             <ScrollShadow
-              size={10}
-              className="p-5 flex flex-col gap-5 h-[calc(100vh-65px-356px)] no-scrollbar"
+              size={2}
+              className="flex flex-col gap-3 no-scrollbar"
             >
               {convertedArray.length === 0 ? (
-                <div className="h-full w-full flex items-center justify-center text-lg">No Items to show...</div>
+                <div className="h-full w-full flex items-center justify-center text-lg">
+                  No Items to show...
+                </div>
               ) : (
                 convertedArray.map((menuItem, i) => (
                   <MenuItem key={i} {...menuItem} />
                 ))
               )}
-            </ScrollShadow>
             <MenuForm />
+            </ScrollShadow>
           </div>
-          <div className="w-[40%] h-full">
+          <div className="w-[30%] h-full fixed right-0">
             {isClient && (
-              <PDFViewer className="w-full h-full">
+              <PDFViewer className="w-full h-full no-scrollbar">
                 <MenuPDF text={JSON.stringify(menuData, null, 2)} />
               </PDFViewer>
             )}

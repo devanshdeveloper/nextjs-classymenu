@@ -11,6 +11,8 @@ import {
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useTheme } from "next-themes";
 import { FaMoon, FaSun } from "react-icons/fa6";
+import { CiSettings } from "react-icons/ci";
+
 import MenuPDF from "../MenuPDF";
 import useIsClient from "@/hooks/useIsClient";
 import { useMenu } from "@/context";
@@ -27,6 +29,11 @@ export default function NavigationBar() {
         <p className="font-bold text-inherit">Current Section</p>
       </NavbarBrand>
       <NavbarContent justify="end">
+        <NavbarItem>
+          <Button isIconOnly color="primary">
+            <CiSettings size={22} />
+          </Button>
+        </NavbarItem>
         <NavbarItem>
           <Switch
             isSelected={theme === "light"}

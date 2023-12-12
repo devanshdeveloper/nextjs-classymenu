@@ -31,36 +31,67 @@ export default function MenuItem({
   }
 
   return (
-    <Card className="w-full p-3 overflow-visible">
+    <Card className="w-full p-3 overflow-visible rounded-none bg-background">
       <CardHeader className="justify-between">
         <h4 className="text-small font-semibold leading-none text-default-600">
           {name}
         </h4>
-        <div className="flex gap-3">
-          <Button onPress={handleEdit} color="primary" radius="full" size="sm">
-            Edit
-          </Button>
-          <Button
-            onPress={() =>
-              currentEdit === id
-                ? alert("This item is open in editor...")
-                : deleteItem(id)
-            }
-            color="danger"
-            radius="full"
-            size="sm"
-          >
-            Delete
-          </Button>
-        </div>
+        <div>({availability})</div>
       </CardHeader>
       <CardBody className="px-3 py-0 text-small text-default-400 overflow-y-visible">
         <p>{description}</p>
       </CardBody>
-      <CardFooter className="justify-between">
-        <div>({availability})</div>
+      <CardFooter className="justify-end">
         <div className="text-lg">{price}</div>
       </CardFooter>
+      <div className="flex justify-between">
+        <div className="flex gap-2">
+          {[
+            {
+              text: "Edit",
+              onPress: () => handleEdit(id),
+            },
+            { text: "Up" },
+            { text: "Down" },
+            { text: "Merge" },
+            { text: "Copy" },
+            { text: "Undo" },
+          ].map((itemControl, i) => (
+            <Button
+              className="rounded-lg"
+              onPress={itemControl.onPress}
+              color={itemControl.color || "primary"}
+              radius="full"
+              size="sm"
+            >
+              {itemControl.text}
+            </Button>
+          ))}
+        </div>
+        <div className="flex gap-2">
+          {[
+            { text: "Save" },
+            {
+              text: "Delete",
+              onPress: () =>
+                currentEdit === id
+                  ? alert("this is open in from. clear the form to delete...")
+                  : deleteItem(id),
+              color: "danger",
+            },
+          ].map((itemControl, i) => (
+            <Button
+              className="rounded-lg"
+              onPress={itemControl.onPress}
+              color={itemControl.color || "primary"}
+              radius="full"
+              size="sm"
+            >
+              {itemControl.text}
+            </Button>
+          ))}
+        </div>
+      </div>
     </Card>
   );
 }
